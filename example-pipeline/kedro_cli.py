@@ -77,7 +77,7 @@ example: param1:value1,param2:value2. Each parameter is split by the first comma
 so parameter values are allowed to contain colons, parameter keys are not."""
 
 
-def _config_file_callback(ctx, param, value):  # pylint: disable=unused-argument
+def _config_file_callback(ctx, param, value):    # pylint: disable=unused-argument
     """Config file callback, that replaces command line options with config file
     values. If command line options are passed, they override config file values.
     """
@@ -85,9 +85,9 @@ def _config_file_callback(ctx, param, value):  # pylint: disable=unused-argument
     import anyconfig  # pylint: disable=import-outside-toplevel
 
     ctx.default_map = ctx.default_map or {}
-    section = ctx.info_name
-
     if value:
+        section = ctx.info_name
+
         config = anyconfig.load(value)[section]
         ctx.default_map.update(config)
 

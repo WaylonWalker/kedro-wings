@@ -89,13 +89,12 @@ class KedroWings:
             return
 
         logger.info("KedroWings is Enabled")
-        all_dataset_names = set(
-            [
-                ds
-                for node in pipeline.nodes
-                for ds in [inp for inp in node.inputs] + [outp for outp in node.outputs]
-            ]
-        )
+        all_dataset_names = {
+            ds
+            for node in pipeline.nodes
+            for ds in [inp for inp in node.inputs] + [outp for outp in node.outputs]
+        }
+
 
         catalog_entries = self._create_catalog_entries(all_dataset_names)
 
